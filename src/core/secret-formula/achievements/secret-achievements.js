@@ -117,8 +117,8 @@ export const secretAchievements = [
   },
   {
     id: 33,
-    name: "A sound financial decision",
-    description: "Click on the button to purchase STD coins."
+    name: "Wasted",
+    description: "Turn off the news from the options menu."
   },
   {
     id: 34,

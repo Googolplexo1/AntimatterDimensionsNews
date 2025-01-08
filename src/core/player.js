@@ -210,9 +210,16 @@ window.player = {
     seen: {},
     specialTickerData: {
       uselessNewsClicks: 0,
-      paperclips: 0,
+      paperclips: DC.D1,
       newsQueuePosition: 1000,
-      eiffelTowerChapter: 0
+      eiffelTowerChapter: 0,
+      dimensions: Array.range(0, 4).map(tier => ({
+        cost: [DC.D1, DC.E1, DC.E3, DC.E6][tier],
+        amount: DC.D0,
+        bought: 0
+      })),
+      ascensions: 0,
+      boosts: 0
     },
     totalSeen: 0,
   },
@@ -359,7 +366,7 @@ window.player = {
     previousRuns: {}
   },
   IPMultPurchases: 0,
-  version: 25,
+  version: 50,
   infinityPower: DC.D1,
   postC4Tier: 0,
   eternityPoints: DC.D0,

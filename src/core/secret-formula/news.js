@@ -1,5 +1,7 @@
 import { DC } from "../constants";
 
+import { NewsDimensions } from "@/core/dimensions/news-dimension";
+
 // A = always there
 // L = locked
 // R = random chance condition
@@ -7,9 +9,12 @@ import { DC } from "../constants";
 // AI = created with gpt2
 
 function newsAnimSpd(seconds) {
-  return seconds / player.options.news.speed;
+  return seconds / NewsDimensions.speed();
 }
 
+function addPaperclips() {
+  Currency.paperclips.add(Decimal.pow(3, player.news.specialTickerData.ascensions));
+}
 
 export const news = [
   {
@@ -1751,7 +1756,7 @@ export const news = [
     id: "a289",
     text: "Click here to disassemble the news ticker for a trace amount of paperclips.",
     onClick() {
-      player.news.specialTickerData.paperclips++;
+      addPaperclips();
       GameOptions.toggleNews();
     }
   },
@@ -1761,8 +1766,8 @@ export const news = [
       const paperclips = player.news.specialTickerData.paperclips;
       return `You see, this news isn't normal news. It is being produced by the first news dimension. If you want
         to unlock more news, you have to collect enough paperclips to build the second news dimension. You
-        currently have ${quantifyInt("paperclip", paperclips)}, but you need
-        ${formatInt(paperclips + 10)} paperclips to afford it.`;
+        currently have ${quantify("paperclip", paperclips)}, but you need
+        ${format(paperclips.plus(10))} paperclips to afford it.`;
     }
   },
   {
@@ -1804,7 +1809,7 @@ export const news = [
       onClick() {
         if (wasClicked) return undefined;
         wasClicked = true;
-        player.news.specialTickerData.paperclips++;
+        addPaperclips();
         return this.text;
       }
     };
@@ -3239,7 +3244,7 @@ export const news = [
       return `For the record, you currently have ${player.news.specialTickerData.paperclips}
       Useless Paperclips. You may want to spend them on something.`;
     },
-    get unlocked() { return player.news.specialTickerData.paperclips > 0; }
+    get unlocked() { return player.news.specialTickerData.paperclips.gt(0); }
   },
   {
     id: "l85",
@@ -4195,7 +4200,7 @@ export const news = [
     text: "Click here to disassemble the news ticker for a trace amount of useless paperclips.",
     onClick() {
       GameOptions.toggleNews();
-      player.news.specialTickerData.paperclips++;
+      addPaperclips();
     }
   },
   {

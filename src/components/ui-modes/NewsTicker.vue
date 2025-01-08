@@ -2,6 +2,8 @@
 import { openExternalLink } from "@/utility/open-external-link";
 import { STEAM } from "@/env";
 
+import { NewsDimensions } from "@/core/dimensions/news-dimension";
+
 export default {
   name: "NewsTicker",
   data() {
@@ -92,14 +94,14 @@ export default {
         line.style.transform = "translateX(0)";
       }
 
-      const DELAY = 1000;
+      const DELAY = 100;
       this.delayTimeout = setTimeout(this.scrollMessage.bind(this), DELAY);
     },
     scrollMessage() {
       const line = this.$refs.line;
 
       // SCROLL_SPEED is in pixels per second
-      const SCROLL_SPEED = player.options.news.speed * 100;
+      const SCROLL_SPEED = NewsDimensions.speed() * 100;
       const scrollDuration = (this.$refs.ticker.clientWidth + line.clientWidth) / SCROLL_SPEED;
 
       line.style["transition-duration"] = `${scrollDuration}s`;
@@ -109,7 +111,7 @@ export default {
         line.style.transform = "translateX(-100%)";
       }
 
-      NewsHandler.addSeenNews(this.currentNews.id);
+      if (SCROLL_SPEED) NewsHandler.addSeenNews(this.currentNews.id);
       if (NewsHandler.uniqueTickersSeen >= 50) Achievement(22).unlock();
 
       this.scrollTimeout = setTimeout(this.prepareNextMessage.bind(this), scrollDuration * 1000);

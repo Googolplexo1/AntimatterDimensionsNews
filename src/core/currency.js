@@ -477,3 +477,8 @@ Currency.galaxyGeneratorGalaxies = new class extends NumberCurrency {
     player.celestials.pelle.galaxyGenerator.spentGalaxies += spent;
   }
 }();
+
+Currency.paperclips = new class extends DecimalCurrency {
+  get value() { return player.news.specialTickerData.paperclips; }
+  set value(value) { player.news.specialTickerData.paperclips = value; }
+}();

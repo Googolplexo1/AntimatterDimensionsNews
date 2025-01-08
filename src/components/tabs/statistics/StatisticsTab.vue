@@ -51,7 +51,6 @@ export default {
       },
       matterScale: [],
       lastMatterTime: 0,
-      paperclips: 0,
       fullTimePlayed: 0,
     };
   },
@@ -145,7 +144,6 @@ export default {
 
       this.isDoomed = Pelle.isDoomed;
       this.realTimeDoomed.setFrom(player.records.realTimeDoomed);
-      this.paperclips = player.news.specialTickerData.paperclips;
     },
     formatDecimalAmount(value) {
       return value.gt(1e9) ? format(value, 3) : formatInt(Math.floor(value.toNumber()));
@@ -195,9 +193,6 @@ export default {
         </div>
         <div>
           You have unlocked {{ quantifyInt("Secret Achievement", secretAchievementCount) }}.
-        </div>
-        <div v-if="paperclips">
-          You have {{ quantifyInt("useless paperclip", paperclips) }}.
         </div>
         <div v-if="fullGameCompletions">
           <br>

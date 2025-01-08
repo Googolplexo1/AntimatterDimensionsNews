@@ -37,6 +37,15 @@ export const tabs = [
         id: 2,
         hidable: true,
       },
+      {
+        key: "news",
+        name: "News Dimensions",
+        hideAt: 2.5,
+        symbol: "<i class='fas fa-newspaper'></i>",
+        component: "NewsDimensionsTab",
+        id: 3,
+        hidable: true,
+      },
     ]
   },
   {

@@ -11,6 +11,8 @@ import { supportedBrowsers } from "./supported-browsers";
 
 import Payments from "./core/payments";
 
+import { NewsDimensions } from "./core/dimensions/news-dimension";
+
 if (GlobalErrorHandler.handled) {
   throw new Error("Initialization failed");
 }
@@ -562,6 +564,7 @@ export function gameLoop(passDiff, options = {}) {
   EternityChallenge(12).tryFail();
   Achievements._power.invalidate();
 
+  NewsDimensions.tick(diff);
   TimeDimensions.tick(diff);
   InfinityDimensions.tick(diff);
   AntimatterDimensions.tick(diff);

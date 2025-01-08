@@ -43,15 +43,6 @@ export default {
         tooltip: false
       };
     },
-    sliderPropsSpeed() {
-      return {
-        min: 0.5,
-        max: 2,
-        interval: 0.01,
-        width: "98%",
-        tooltip: false
-      };
-    },
   },
   watch: {
     type(newValue) {
@@ -63,9 +54,6 @@ export default {
     AIChance(newValue) {
       player.options.news.AIChance = parseFloat(newValue, 10);
     },
-    speed(newValue) {
-      player.options.news.speed = parseFloat(newValue, 10);
-    },
     includeAnimated(newValue) {
       player.options.news.includeAnimated = newValue;
     },
@@ -76,7 +64,6 @@ export default {
       this.enabled = options.enabled;
       this.repeatBuffer = options.repeatBuffer;
       this.AIChance = options.AIChance;
-      this.speed = options.speed;
       this.includeAnimated = options.includeAnimated;
     },
     adjustSliderValueRepeatBuffer(value) {
@@ -87,9 +74,9 @@ export default {
       this.AIChance = value;
       player.options.AIChance = this.AIChance;
     },
-    adjustSliderValueSpeed(value) {
-      this.speed = value;
-      player.options.speed = this.speed;
+    toggleNews() {
+      if (player.options.news.enabled) SecretAchievement(33).unlock();
+      GameOptions.toggleNews();
     }
   }
 };
@@ -102,7 +89,7 @@ export default {
     </template>
     <PrimaryButton
       class="o-primary-btn o-primary-btn--option-wide"
-      onclick="GameOptions.toggleNews()"
+      @click="toggleNews"
     >
       {{ newsOnOffLabel }}
     </PrimaryButton>
@@ -122,15 +109,6 @@ export default {
         v-bind="sliderPropsAIChance"
         :value="AIChance"
         @input="adjustSliderValueAIChance($event)"
-      />
-    </div>
-    <div class="o-primary-btn o-primary-btn--option-wide o-primary-btn--slider">
-      <b>{{ formatPercents(parseFloat(speed)) }} scroll speed</b>
-      <SliderComponent
-        class="o-primary-btn--slider__slider"
-        v-bind="sliderPropsSpeed"
-        :value="speed"
-        @input="adjustSliderValueSpeed($event)"
       />
     </div>
     <ModalOptionsToggleButton

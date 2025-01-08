@@ -12,6 +12,7 @@
   --color-antimatter--bg: #df50504d;
   --color-infinity--bg: #b67f334d;
   --color-eternity--bg: #b341e04d;
+  --color-news--bg: #6392684d;
 }
 
 :root .t-s12 {
@@ -422,7 +423,7 @@ body.t-s12 {
 .reset-container {
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 100%;
   height: 16rem;
   justify-content: space-between;
   align-items: center;
@@ -676,6 +677,10 @@ body.t-s12 {
   background-color: var(--color-eternity--bg);
 }
 
+.l-dimension-row-news-dim:nth-child(even) {
+  background-color: var(--color-news--bg);
+}
+
 .c-infinity-dim-description__accent {
   color: var(--color-infinity);
 }
@@ -709,6 +714,10 @@ body.t-s12 {
 
 .c-time-dim-description__accent {
   color: var(--color-eternity);
+}
+
+.c-news-dim-description__accent {
+  color: var(--color-news);
 }
 
 .c-time-dim-row:nth-child(even) {

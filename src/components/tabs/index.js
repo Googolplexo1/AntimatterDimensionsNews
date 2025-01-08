@@ -20,6 +20,7 @@ import InfinityDimensionsTab from "./infinity-dimensions/InfinityDimensionsTab";
 import InfinityUpgradesTab from "./infinity-upgrades/InfinityUpgradesTab";
 import LaitelaTab from "./celestial-laitela/LaitelaTab";
 import MultiplierBreakdownTab from "./statistics/MultiplierBreakdownTab";
+import NewsDimensionsTab from "./news-dimensions/NewsDimensionsTab";
 import NormalAchievementsTab from "./normal-achievements/NormalAchievementsTab";
 import NormalChallengesTab from "./normal-challenges/NormalChallengesTab";
 import OptionsGameplayTab from "./options-gameplay/OptionsGameplayTab";
@@ -46,6 +47,7 @@ const TabComponents = {
   AntimatterDimensionsTab,
   InfinityDimensionsTab,
   TimeDimensionsTab,
+  NewsDimensionsTab,
   OptionsSavingTab,
   OptionsVisualTab,
   OptionsGameplayTab,

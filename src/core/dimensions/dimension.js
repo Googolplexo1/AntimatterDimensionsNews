@@ -44,6 +44,10 @@ export class DimensionState {
     dimension.amount = dimension.amount.plus(this.productionForDiff(diff));
   }
 
+  produceDimensionsRealTime(dimension, diff) {
+    dimension.amount = dimension.amount.plus(this.productionPerRealSecond.times(diff / 10000));
+  }
+
   static get dimensionCount() { return 8; }
 
   static createAccessor() {
