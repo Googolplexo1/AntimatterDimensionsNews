@@ -35,12 +35,12 @@ export function buyMaxNewsDimension(tier, portionToSpend = 1) {
 
 export function maxAllNewsDimensions() {
   // Try to buy single from the highest affordable new dimensions
-  for (let i = 8; i > 0 && NewsDimension(i).bought === 0; i--) {
+  for (let i = 4; i > 0 && NewsDimension(i).bought === 0; i--) {
     buySingleNewsDimension(i);
   }
 
   // Buy everything costing less than 1% of initial EP
-  for (let i = 8; i > 0; i--) {
+  for (let i = 4; i > 0; i--) {
     buyMaxNewsDimension(i, 0.01);
   }
 
