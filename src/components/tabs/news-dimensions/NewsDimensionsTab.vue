@@ -4,7 +4,7 @@ import NewsDimensionRow from "./NewsDimensionRow";
 import NewsBoostRow from "./NewsBoostRow";
 import PaperclipAscensionRow from "./PaperclipAscensionRow";
 
-import { NewsDimensions } from "@/core/dimensions/news-dimension";
+import { NewsDimensions, maxAllNewsDimensions } from "@/core/dimensions/news-dimension";
 
 export default {
   name: "NewsDimensionsTab",

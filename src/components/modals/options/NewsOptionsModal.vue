@@ -75,7 +75,10 @@ export default {
       player.options.AIChance = this.AIChance;
     },
     toggleNews() {
-      if (player.options.news.enabled) SecretAchievement(33).unlock();
+      if (player.options.news.enabled) {
+        if (SecretAchievement(33).isUnlocked) return;
+        SecretAchievement(33).unlock();
+      }
       GameOptions.toggleNews();
     }
   }
