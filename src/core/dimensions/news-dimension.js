@@ -4,6 +4,7 @@ import { DimensionState } from "./dimension";
 
 export function buySingleNewsDimension(tier) {
   const dim = NewsDimension(tier);
+  if (Currency.paperclips.value.lt(dim.cost)) return false;
   Currency.paperclips.subtract(dim.cost);
   dim.amount = dim.amount.plus(1);
   dim.bought += 1;
