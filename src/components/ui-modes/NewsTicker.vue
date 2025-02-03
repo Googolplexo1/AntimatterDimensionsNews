@@ -18,6 +18,7 @@ export default {
   },
   beforeCreate() {
     this.recentTickers = [];
+    this.first = true;
   },
   mounted() {
     document.addEventListener("visibilitychange", () => this.restart.bind(this));
@@ -53,7 +54,7 @@ export default {
       if (line === undefined) return;
 
       // Prevent tickers from repeating if they aren't unlocked or were seen recently
-      const canShow = news => (news.unlocked ?? true) && !this.recentTickers.includes(news.id);
+      const canShow = news => (news.unlocked ?? true) && !this.recentTickers.includes(news.id) && !(this.first && news.onClick);
 
       if (nextNewsMessageId && GameDatabase.news.find(message => message.id === nextNewsMessageId)) {
         this.currentNews = GameDatabase.news.find(message => message.id === nextNewsMessageId);
@@ -70,6 +71,7 @@ export default {
           .randomElement();
       }
 
+      this.first = false;
       this.recentTickers.push(this.currentNews.id);
       while (this.recentTickers.length > player.options.news.repeatBuffer) this.recentTickers.shift();
 
