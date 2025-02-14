@@ -44,7 +44,7 @@ export default {
     </div>
     <div>
       <p>
-        You have <span class="c-news-dim-description__accent">{{ formatInt(paperclips) }}</span> {{ pluralize("paperclip", paperclips) }}.
+        You have <span class="c-news-dim-description__accent">{{ format(paperclips, 2) }}</span> {{ pluralize("paperclip", paperclips) }}.
       </p>
       <p>
         The 1st News Dimension is producing <span class="c-news-dim-description__accent">{{ format(newsSpeed, 1, 1) }}</span> hectopixels of news per second.

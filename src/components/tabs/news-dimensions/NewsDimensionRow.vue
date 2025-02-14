@@ -34,7 +34,7 @@ export default {
       return `Purchased ${quantifyInt("time", this.bought)}`;
     },
     costText() {
-      return `Cost: ${quantify("paperclip", this.cost)}`;
+      return `Cost: ${quantify("paperclip", this.cost, 2)}`;
     }
   },
   methods: {
